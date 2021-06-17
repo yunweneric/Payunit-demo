@@ -224,7 +224,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (BuildContext context) => Paynow(),

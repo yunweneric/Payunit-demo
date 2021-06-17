@@ -39,12 +39,14 @@ class _HomePageState extends State<HomePage> {
                 ),
                 TextFormField(
                   textAlign: TextAlign.center,
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    fillColor: Colors.teal,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
-                      borderSide: BorderSide.none,
+                      borderSide: BorderSide(
+                        color: Colors.teal,
+                        width: 1.0,
+                      ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),

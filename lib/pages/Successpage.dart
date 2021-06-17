@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:payunitdowngraded/widget/constants.dart';
 
 class Successpage extends StatelessWidget {
   const Successpage({Key key}) : super(key: key);
@@ -7,10 +8,15 @@ class Successpage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        height: screenHeight(context),
+        width: screenWidth(context),
         decoration: BoxDecoration(
-          color: Colors.teal,
+          color: Colors.white,
         ),
-        child: Text("Success transaction"),
+        child: Center(
+            child: CircularProgressIndicator(
+          backgroundColor: Colors.teal,
+        )),
       ),
     );
   }
