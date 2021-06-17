@@ -31,6 +31,7 @@ dependencies:
   pay_unit_sdk: ^2.0.3
   random_string: ^2.1.0
   flutter_config: ^1.0.8
+  device_preview: ^0.5.5
 
 
 

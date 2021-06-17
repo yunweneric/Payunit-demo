@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:payunitdowngraded/pages/Casedetails.dart';
+import 'package:payunitdowngraded/pages/Successpage.dart';
 import 'package:payunitdowngraded/widget/constants.dart';
 
 class ButtomappBar extends StatelessWidget {
@@ -88,8 +90,12 @@ class ButtomappBar extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                Navigator.pushNamed(context, '/trendingpage');
-                print("Trending Page");
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => Successpage(),
+                  ),
+                );
               },
             ),
             FlatButton(

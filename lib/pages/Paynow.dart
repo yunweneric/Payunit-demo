@@ -5,15 +5,15 @@ import 'package:payunitdowngraded/widget/constants.dart';
 import 'package:random_string/random_string.dart';
 import 'package:flutter_config/flutter_config.dart';
 
-var apiKey;
-var apiUser;
-var apiPassword;
 var totalAmount;
+String api_user;
+String api_password;
+String api_key;
 
 class Paynow extends StatefulWidget {
-  final String amount;
-  final String transactionId;
-  const Paynow({Key key, this.amount, this.transactionId}) : super(key: key);
+  const Paynow({
+    Key key,
+  }) : super(key: key);
 
   @override
   _PaynowState createState() => _PaynowState();
@@ -27,8 +27,11 @@ class _PaynowState extends State<Paynow> {
   }
 
   Future getCredentials() async {
-    apiUser = FlutterConfig.get('apiUser');
-    print(apiUser);
+    setState(() {
+      api_key = FlutterConfig.get('apiUser');
+      api_password = FlutterConfig.get('apiPassword');
+      api_key = FlutterConfig.get('apiKey');
+    });
   }
 
   final GlobalKey<FormFieldState> _globalKey = GlobalKey<FormFieldState>();
@@ -69,6 +72,9 @@ class _PaynowState extends State<Paynow> {
                     onChanged: (amount) => {
                       setState(() {
                         totalAmount = amount;
+                        print(api_key);
+                        print(api_password);
+                        // print(FlutterConfig.get('apiKey'));
                       })
                     },
                     textAlign: TextAlign.center,
@@ -104,7 +110,7 @@ class _PaynowState extends State<Paynow> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 80.0, vertical: 30),
                   child: PayUnitButton(
-                    apiUser: "payunit_sand_TyHmv7QIe",
+                    apiUser: 'payunit_sand_TyHmv7QIe',
                     apiPassword: "47c6ba11-3d5c-46af-ba29-79199c35fca0",
                     apiKey: "f41b310f22617387d0c01f9f461b91dbf5bb54bd",
                     transactionId: randomAlphaNumeric(10),

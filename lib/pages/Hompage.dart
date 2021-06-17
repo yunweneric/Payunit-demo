@@ -41,9 +41,10 @@ class _HomePageState extends State<HomePage> {
                   textAlign: TextAlign.center,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
+                    fillColor: Colors.teal,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
-                      borderSide: BorderSide(),
+                      borderSide: BorderSide.none,
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
@@ -57,10 +58,11 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.teal[200],
                       ),
                     ),
+                    prefixIcon: Icon(Icons.search),
                     hintText: "Search",
                     hintStyle: TextStyle(
                       fontFamily: "Lato",
-                      fontSize: 12.0,
+                      fontSize: 14.0,
                       color: Colors.blueGrey,
                       fontWeight: FontWeight.w600,
                     ),
