@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:payunitdowngraded/Hompage.dart';
-import 'package:payunitdowngraded/widget/Paybutton.dart';
-import 'dart:math';
+import 'package:flutter_config/flutter_config.dart';
+import 'package:payunitdowngraded/pages/Hompage.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Required by FlutterConfig
+  await FlutterConfig.loadEnvVariables();
   runApp(MyApp());
 }
 

@@ -69,25 +69,21 @@ const knewrecipetitle = TextStyle(
 const kmealtimenewrecipe =
     TextStyle(fontFamily: "Poppins", color: klightgrey, fontSize: 12.0);
 
-const kresultTitle = TextStyle(
-    fontFamily: "Poppins",
-    // color: Colors.black,
-    fontSize: 28.0,
-    fontWeight: FontWeight.w900,
-    textBaseline: TextBaseline.alphabetic);
 const ksubtitles = TextStyle(
-    fontSize: 20.0, fontFamily: 'Poppins', fontWeight: FontWeight.bold);
-
-const klighttext =
-    TextStyle(color: klightgrey, fontSize: 14.0, fontFamily: 'Poppins');
-
-const kbrandtitle = TextStyle(
+  color: Colors.blueGrey,
   fontFamily: "Lato",
-  fontSize: 28.0,
-  fontWeight: FontWeight.bold,
-  color: kprimaryblue,
-  letterSpacing: 1.0,
+  fontSize: 16.0,
+  fontWeight: FontWeight.w600,
 );
+
+const kcompany = TextStyle(
+    fontFamily: "Lato", fontWeight: FontWeight.bold, color: Colors.blueGrey);
+const klittecom = TextStyle(
+    fontFamily: "Lato",
+    fontSize: 12.0,
+    fontWeight: FontWeight.bold,
+    color: Colors.blueGrey);
+
 const kbrandtitle2 = TextStyle(
   fontFamily: "Lato",
   fontSize: 28.0,
@@ -95,13 +91,7 @@ const kbrandtitle2 = TextStyle(
   color: kprimaryred,
   letterSpacing: 1.0,
 );
-const kbrandtitle3 = TextStyle(
-  fontFamily: "Lato",
-  fontSize: 28.0,
-  fontWeight: FontWeight.bold,
-  color: Colors.white,
-  letterSpacing: 1.0,
-);
+
 //--------------------------- screen height & width ----------------------------
 
 double screenHeight(context) {

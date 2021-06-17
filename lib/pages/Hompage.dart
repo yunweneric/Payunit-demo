@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:payunitdowngraded/pages/Casedetails.dart';
+import 'package:payunitdowngraded/widget/Mainappbar.dart';
 import 'package:payunitdowngraded/widget/bottomappbar.dart';
+import 'package:payunitdowngraded/widget/constants.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
@@ -25,40 +28,19 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 18.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.teal[50],
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Icon(Icons.menu_rounded)),
-                      ),
-                      Text("Home"),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.teal[50],
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Icon(Icons.notifications)),
-                      ),
-                    ],
+                  child: MainAppbar(
+                    firstIcon: Icon(Icons.menu_rounded),
+                    topic: "Home",
+                    lastIcon: Icon(Icons.notifications),
                   ),
                 ),
                 SizedBox(
                   height: 20.0,
                 ),
                 TextFormField(
+                  textAlign: TextAlign.center,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
-                    // hintStyle: kplaceholder,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
                       borderSide: BorderSide(),
@@ -66,16 +48,22 @@ class _HomePageState extends State<HomePage> {
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
                       borderSide: BorderSide(
-                        color: Colors.teal[50],
+                        color: Colors.teal[200],
                       ),
                     ),
                     errorBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
                       borderSide: BorderSide(
-                        color: Colors.teal[50],
+                        color: Colors.teal[200],
                       ),
                     ),
                     hintText: "Search",
+                    hintStyle: TextStyle(
+                      fontFamily: "Lato",
+                      fontSize: 12.0,
+                      color: Colors.blueGrey,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
                 SizedBox(height: 30.0),
@@ -151,6 +139,121 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Statistics', style: ksubtitles),
+                      Icon(
+                        Icons.more_horiz_rounded,
+                        color: Colors.blueGrey,
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                Stack(
+                  // fit: StackFit.passthrough,
+                  alignment: Alignment.topCenter,
+                  overflow: Overflow.visible,
+                  children: [
+                    Container(
+                      height: 200,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/child2.jpg'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: -10,
+                      // right: 50,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.blueGrey.withOpacity(0.2),
+                              spreadRadius: 1,
+                              blurRadius: 7,
+                              offset:
+                                  Offset(0, 10), // changes position of shadow
+                            ),
+                          ],
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.white,
+                        ),
+                        height: 80,
+                        width: screenWidth(context) / 1.5,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('Help the Jamaican .......',
+                                    style: kcompany),
+                                Row(
+                                  children: [
+                                    Text(
+                                      '12',
+                                      style: TextStyle(
+                                          fontFamily: "Lato",
+                                          fontSize: 12.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.teal),
+                                    ),
+                                    SizedBox(
+                                      width: 5.0,
+                                    ),
+                                    Text(
+                                      'participant',
+                                      style: klittecom,
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: 40.0,
+                              child: RaisedButton(
+                                color: Colors.teal,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          CaseDetails(),
+                                    ),
+                                  );
+                                },
+                                child: (Icon(
+                                  Icons.arrow_forward_ios_rounded,
+                                  color: Colors.white,
+                                  size: 20.0,
+                                )),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 20.0,
                 )
               ],
             ),
@@ -196,6 +299,7 @@ class TopIcon extends StatelessWidget {
           this.content == null ? "" : this.content,
           style: TextStyle(
             fontFamily: 'Lato',
+            color: Colors.blueGrey,
             fontSize: 14.0,
             fontWeight: FontWeight.w500,
           ),
