@@ -20,16 +20,7 @@ class Paynow extends StatefulWidget {
 class _PaynowState extends State<Paynow> {
   @override
   void initState() {
-    getCredentials();
     super.initState();
-  }
-
-  Future getCredentials() async {
-    setState(() {
-      print((FlutterConfig.get('LiveapiUser')));
-      print((FlutterConfig.get('LiveapiKey')));
-      print((FlutterConfig.get('LiveapiPassword')));
-    });
   }
 
   final GlobalKey<FormFieldState> _globalKey = GlobalKey<FormFieldState>();
