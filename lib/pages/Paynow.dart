@@ -7,9 +7,6 @@ import 'package:random_string/random_string.dart';
 import 'package:flutter_config/flutter_config.dart';
 
 var totalAmount;
-String api_user;
-String api_password;
-String api_key;
 
 class Paynow extends StatefulWidget {
   const Paynow({
@@ -29,13 +26,11 @@ class _PaynowState extends State<Paynow> {
 
   Future getCredentials() async {
     setState(() {
-      api_key = FlutterConfig.get('apiUser');
-      api_password = FlutterConfig.get('apiPassword');
-      api_key = FlutterConfig.get('apiKey');
+      print((FlutterConfig.get('LiveapiUser')));
+      print((FlutterConfig.get('LiveapiKey')));
+      print((FlutterConfig.get('LiveapiPassword')));
     });
   }
-
-  List transactionDetails = [];
 
   final GlobalKey<FormFieldState> _globalKey = GlobalKey<FormFieldState>();
   TextEditingController _amountController = TextEditingController();
@@ -75,9 +70,6 @@ class _PaynowState extends State<Paynow> {
                     onChanged: (amount) => {
                       setState(() {
                         totalAmount = amount;
-                        print(api_key);
-                        print(api_password);
-                        // print(FlutterConfig.get('apiKey'));
                       })
                     },
                     textAlign: TextAlign.center,
@@ -113,11 +105,16 @@ class _PaynowState extends State<Paynow> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 70.0, vertical: 30),
                   child: PayUnitButton(
-                    apiUser: 'payunit_sand_TyHmv7QIe',
-                    apiPassword: "47c6ba11-3d5c-46af-ba29-79199c35fca0",
-                    apiKey: "f41b310f22617387d0c01f9f461b91dbf5bb54bd",
-                    transactionId: randomAlpha(10),
-                    mode: 'sandbox', // sandbox or live,
+                    // apiUser: FlutterConfig.get('SandboxapiUser'),
+                    // apiPassword: FlutterConfig.get('SandboxapiPassword'),
+                    // apiKey: FlutterConfig.get('SandboxapiKey'),
+
+                    apiUser: FlutterConfig.get('LiveapiUser'),
+                    apiPassword: FlutterConfig.get('LiveapiPassword'),
+                    apiKey: FlutterConfig.get('LiveapiKey'),
+
+                    transactionId: randomAlpha(15),
+                    mode: 'live', // sandbox or live,
                     transactionCallBackUrl: "<Your transactionCallBackUrl url>",
                     notiFyUrl: "<Your notification url>",
                     transactionAmount: totalAmount,
@@ -129,10 +126,6 @@ class _PaynowState extends State<Paynow> {
 
                     ///the colors of the PayUnit Button text DEFAULT WHITE,
                     actionAfterProccess: (transactionId, transactionStatus) {
-                      setState(() {
-                        transactionDetails = transactionStatus.split(',');
-                      });
-
                       print(transactionId);
                       print(transactionStatus);
 
