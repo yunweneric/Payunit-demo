@@ -59,7 +59,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                     fontFamily: "Lato",
                     fontSize: 15.0,
                     height: 1.5,
-                    wordSpacing: 5.0,
+                    wordSpacing: 3.0,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -120,7 +120,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                     // ProgressIndicator(value: 2,)
                     SliderTheme(
                       child: Container(
-                        width: screenWidth(context) / 1.5,
+                        width: screenWidth(context) / 1.8,
                         child: Slider(
                           onChanged: (intial) {
                             print('hi');

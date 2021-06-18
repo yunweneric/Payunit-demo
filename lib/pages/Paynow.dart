@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pay_unit_sdk/pay_unit_sdk.dart';
 import 'package:payunitdowngraded/pages/Casedetails.dart';
+import 'package:payunitdowngraded/pages/Successpage.dart';
 import 'package:payunitdowngraded/widget/constants.dart';
 import 'package:random_string/random_string.dart';
 import 'package:flutter_config/flutter_config.dart';
@@ -33,6 +34,8 @@ class _PaynowState extends State<Paynow> {
       api_key = FlutterConfig.get('apiKey');
     });
   }
+
+  List transactionDetails = [];
 
   final GlobalKey<FormFieldState> _globalKey = GlobalKey<FormFieldState>();
   TextEditingController _amountController = TextEditingController();
@@ -108,12 +111,12 @@ class _PaynowState extends State<Paynow> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 80.0, vertical: 30),
+                      horizontal: 70.0, vertical: 30),
                   child: PayUnitButton(
                     apiUser: 'payunit_sand_TyHmv7QIe',
                     apiPassword: "47c6ba11-3d5c-46af-ba29-79199c35fca0",
                     apiKey: "f41b310f22617387d0c01f9f461b91dbf5bb54bd",
-                    transactionId: randomAlphaNumeric(10),
+                    transactionId: randomAlpha(10),
                     mode: 'sandbox', // sandbox or live,
                     transactionCallBackUrl: "<Your transactionCallBackUrl url>",
                     notiFyUrl: "<Your notification url>",
@@ -126,12 +129,42 @@ class _PaynowState extends State<Paynow> {
 
                     ///the colors of the PayUnit Button text DEFAULT WHITE,
                     actionAfterProccess: (transactionId, transactionStatus) {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => CaseDetails(),
-                        ),
-                      );
+                      setState(() {
+                        transactionDetails = transactionStatus.split(',');
+                      });
+
+                      print(transactionId);
+                      print(transactionStatus);
+
+                      if (transactionStatus == "SUCCESS") {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => Successpage(
+                              message:
+                                  "You have successfully donated $totalAmount XAF \nWe appreciate you for your kind jesture.\nYou will be redirected 10 seconds....",
+                              amount: totalAmount,
+                              textColor: Colors.teal,
+                              transactionStatus: transactionStatus,
+                              imageUrl: 'assets/images/confirm2.png',
+                            ),
+                          ),
+                        );
+                      } else {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => Successpage(
+                              message:
+                                  "Your transaction was not successful. Please try again. \nYou will be redirected 10 seconds....",
+                              amount: totalAmount,
+                              textColor: Colors.red[500],
+                              transactionStatus: transactionStatus,
+                              imageUrl: 'assets/images/fail.png',
+                            ),
+                          ),
+                        );
+                      }
                     },
                   ),
                 ),

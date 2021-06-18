@@ -168,13 +168,23 @@ class _HomePageState extends State<HomePage> {
                   alignment: Alignment.topCenter,
                   overflow: Overflow.visible,
                   children: [
-                    Container(
-                      height: 200,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/child2.jpg'),
-                          fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => CaseDetails(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        height: 200,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/child2.jpg'),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),

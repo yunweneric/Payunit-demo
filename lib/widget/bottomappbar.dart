@@ -20,19 +20,19 @@ class ButtomappBar extends StatelessWidget {
       : super(key: key);
   Widget build(BuildContext context) {
     return BottomAppBar(
-      elevation: 0,
+      elevation: 0.0,
       // color: Colors.red,
       child: SizedBox(
         width: screenWidth(context),
-        height: 80,
+        height: 70,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             FlatButton(
-              height: 50.0,
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -56,15 +56,14 @@ class ButtomappBar extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                // Navigator.pushNamed(context, '/login');
                 Navigator.pushNamed(context, '/home');
                 print("Going home");
               },
             ),
             FlatButton(
-              height: 50.0,
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 0),
                 child: Column(
                   // crossAxisAlignment: CrossAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -99,40 +98,6 @@ class ButtomappBar extends StatelessWidget {
               },
             ),
             FlatButton(
-              height: 50.0,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Icon(
-                      // FontAwesomeIcons.,
-                      Icons.account_circle_rounded,
-                      size: 25.0,
-                      color: this.searchcolor == null
-                          ? Colors.blueGrey
-                          : this.searchcolor,
-                      // color: klightgrey,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      width: 10.0,
-                      height: 3.0,
-                      color: this.searchcolor,
-                      child: Text(""),
-                    )
-                  ],
-                ),
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/settings');
-                print("Settings Page");
-              },
-            ),
-            FlatButton(
-              height: 50.0,
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10.0),
                 child: Column(
