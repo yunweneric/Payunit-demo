@@ -56,12 +56,6 @@ PayUnitButton(
                //some operation here , like display a alertDialog after the end of the payment.
               },
             ),
-
-
 ```
 
-![GitHub Logo](./assets/images/shots/shot1.png)
-![GitHub Logo](./assets/images/shots/shot2.png)
-![GitHub Logo](./assets/images/shots/shot3.png)
-![GitHub Logo](./assets/images/shots/shot4.png)
-![GitHub Logo](./assets/images/shots/shot5.png)
+![GitHub Logo](./assets/images/shot.png)
